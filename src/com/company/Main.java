@@ -1,51 +1,43 @@
 package com.company;
 import java.util.*;
+import java.io.*;
 
 public class Main {
 
-        public static void main(String[] args) {
+        public static void main(String[] args) throws IOException {
 
-            String ArrayNames[][] = new String[3][6];
+            File file = new File("D:\\temp.txt");
 
-            //ID
-            ArrayNames[0][0] = "0";
-            ArrayNames[1][0] = "1";
-            ArrayNames[2][0] = "2";
+            Scanner scanner = new Scanner(file);
 
-            //Names
-            ArrayNames[0][1] = "Vo";
-            ArrayNames[1][1] = "Vi";
-            ArrayNames[2][1] = "Va";
+            String ArrayNamesAll[][] = new String[3][6];
 
-            //Age
-            ArrayNames[0][2] = "35";
-            ArrayNames[1][2] = "36";
-            ArrayNames[2][2] = "37";
+            int i = 0;
+            while(scanner.hasNextLine()){
+                String str = scanner.nextLine();
+                //System.out.println(str);
+                String ArrayNames[] = str.split(";");
 
-            //Adress
-            ArrayNames[0][3] = "Dan 30";
-            ArrayNames[1][3] = "Bykiv 3";
-            ArrayNames[2][3] = "Obolon 31";
+                int j = 0;
+                for (String word : ArrayNames) {
+                    ArrayNamesAll[i][j] = word;
+                    //System.out.println(word);
+                    j++;
+                }
+                i++;
 
-            //Land arrea
-            ArrayNames[0][4] = "100";
-            ArrayNames[1][4] = "99";
-            ArrayNames[2][4] = "98";
+            }
 
-            //Other
-            ArrayNames[0][5] = "Test1";
-            ArrayNames[1][5] = "Test2";
-            ArrayNames[2][5] = "Test3";
+            scanner.close();
 
             System.out.print("Input ID of landowner: ");
             Scanner sc= new Scanner(System.in);
             String str = sc.nextLine();
 
-            for (int i = 0; i < ArrayNames.length; i++) {
-                if (str.equals(ArrayNames[i][0])) {
-                    System.out.println("landowners: " + ArrayNames[i][1] + " Age: " + ArrayNames[i][2] + " Adress: " + ArrayNames[i][3] + " Land arrea: " + ArrayNames[i][4] + " Other: " + ArrayNames[i][5]);
+            for (i = 0; i < ArrayNamesAll.length; i++) {
+                if (str.equals(ArrayNamesAll[i][0])) {
+                    System.out.println("landowners: " + ArrayNamesAll[i][1] + " Age: " + ArrayNamesAll[i][2] + " Adress: " + ArrayNamesAll[i][3] + " Land arrea: " + ArrayNamesAll[i][4] + " Other: " + ArrayNamesAll[i][5]);
                 }
             }
         }
-
     }
