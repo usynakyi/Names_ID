@@ -6,6 +6,15 @@ public class Main {
 
         public static void main(String[] args) throws IOException {
 
+            System.out.print("Input administrator password: ");
+            Scanner sc= new Scanner(System.in);
+            String str = sc.nextLine();
+
+            if(!(str.equals("123"))) {
+                System.out.println("You entered an incorrect password! Bb");
+                return;
+            }
+
             File file = new File("D:\\temp.txt");
 
             Scanner scanner = new Scanner(file);
@@ -14,7 +23,7 @@ public class Main {
 
             int i = 0;
             while(scanner.hasNextLine()){
-                String str = scanner.nextLine();
+                str = scanner.nextLine();
                 //System.out.println(str);
                 String ArrayNames[] = str.split(";");
 
@@ -31,8 +40,8 @@ public class Main {
             scanner.close();
 
             System.out.print("Input ID of landowner: ");
-            Scanner sc= new Scanner(System.in);
-            String str = sc.nextLine();
+            sc = new Scanner(System.in);
+            str = sc.nextLine();
 
             for (i = 0; i < ArrayNamesAll.length; i++) {
                 if (str.equals(ArrayNamesAll[i][0])) {
